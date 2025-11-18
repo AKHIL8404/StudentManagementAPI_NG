@@ -1,27 +1,22 @@
 # Stage 1: Build the application using Maven
 FROM maven:3.9.1-eclipse-temurin-17 AS build
 
-# Set the working directory inside the container
 WORKDIR /app
 
-# Copy the pom.xml and the source code to the container
-COPY pom.xml /app/
-COPY src /app/src
+COPY pom.xml .
+RUN mvn dependency:go-offline
 
-# Build the application (skip tests to speed up the build process) and output build logs
-RUN mvn clean package -DskipTests -X
+COPY src ./src
+RUN mvn clean package -DskipTests
 
-# Stage 2: Create the final image with only the JAR file
-FROM openjdk:17-jdk-slim
+# Stage 2: Use valid OpenJDK 17 slim image
+FROM eclipse-temurin:17-jdk-jammy
 
-# Set the working directory inside the container
 WORKDIR /app
+COPY --from=build /app/target/*.jar app.jar
 
-# Copy the JAR file from the build stage
-COPY --from=build /app/target/StudentManagement1-0.0.1-SNAPSHOT.jar app.jar
-
-# Expose the port that the Spring Boot application runs on (default is 8080)
+# Render dynamic port
+ENV PORT=8080
 EXPOSE 8080
 
-# Run the Spring Boot application
 ENTRYPOINT ["java", "-jar", "app.jar"]
