@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/students")
-@CrossOrigin(origins = "http://localhost:4200") // Allow Angular app to call API
+@CrossOrigin(origins = "*") // Allow Angular app to call API
 public class StudentController {
 
     @Autowired
