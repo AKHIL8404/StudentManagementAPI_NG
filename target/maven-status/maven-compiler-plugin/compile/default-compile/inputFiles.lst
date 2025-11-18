@@ -1,0 +1,8 @@
+/data/data/com.termux/files/home/Student-Management/src/main/java/com/base/sms/StudentManagement1Application.java
+/data/data/com.termux/files/home/Student-Management/src/main/java/com/base/sms/config/WebConfig.java
+/data/data/com.termux/files/home/Student-Management/src/main/java/com/base/sms/controller/StudentController.java
+/data/data/com.termux/files/home/Student-Management/src/main/java/com/base/sms/entity/Student.java
+/data/data/com.termux/files/home/Student-Management/src/main/java/com/base/sms/exception/GlobalExceptionHandler.java
+/data/data/com.termux/files/home/Student-Management/src/main/java/com/base/sms/repository/StudentRepository.java
+/data/data/com.termux/files/home/Student-Management/src/main/java/com/base/sms/service/StudentService.java
+/data/data/com.termux/files/home/Student-Management/src/main/java/com/base/sms/service/impl/StudentServiceImpl.java
